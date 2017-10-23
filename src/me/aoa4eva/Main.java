@@ -2,6 +2,7 @@ package me.aoa4eva;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class Main {
 
@@ -18,6 +19,7 @@ public class Main {
         Scanner keyboard = new Scanner(System.in);
         ArrayList <String> colours = new ArrayList<String>();
         String enterColour="";
+        String ans = "";
 
         colours.add("blue");
         colours.add("red");
@@ -34,9 +36,14 @@ public class Main {
 
         if(option==1)
         {
-            System.out.println("Enter the colour to add to the arraylist of colours");
-            enterColour=keyboard.nextLine();
-            colours.add(enterColour);
+            do {
+
+                System.out.println("Enter the colour to add to the arraylist of colours");
+                enterColour = keyboard.nextLine();
+                colours.add(enterColour);
+                System.out.println("Would you like to add another color? (Y)es or (N)o");
+                ans = keyboard.nextLine();
+            }while (ans.equalsIgnoreCase("y") && !ans.equalsIgnoreCase("n"));
             System.out.println(colours.get(colours.indexOf(enterColour)));
 
         }
@@ -53,17 +60,18 @@ public class Main {
 
 
 
-        if(option==3)
-        {
-            for(int counter=0; counter<colours.size(); counter++)
-            {
-                System.out.println(colours.get(counter));
-            }
+        if(option==3) {
+            /*for (String eachColor : colours) {
+                System.out.println(eachColor.toString());
+            }*/
+            printColors(colours);
         }
-
-
-
-
     }
-
+    public static void printColors(ArrayList<String> colours) {
+        //create an array object from the arraylist
+        Object[] obj = colours.toArray();
+        for (Object eachColor : obj) {
+            System.out.println("Color: " + eachColor);
+        }
+    }
 }
