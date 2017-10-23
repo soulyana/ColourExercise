@@ -11,7 +11,7 @@ public class Main {
          Modify it to do the following:
          1. Change the for loop into an enhanced for loop
          2. Put the menu in a loop, so that you can add as many colours as you want
-         3. Write a method to print all the colours in teh array list
+         3. Write a method to print all the colours in the array list
          */
 
         int option=0;
